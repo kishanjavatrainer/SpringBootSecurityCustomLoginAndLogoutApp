@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+      <title>Spring Boot MVC Security</title>
+      <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+   <h3>User Topics Details</h3>
+   <div>
+	    Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b>
+	    <form th:action="@{/app-logout}" method="POST">
+	         <input type="submit" value="Logout"/>
+	    </form>
+   </div> <br/>	 
+    <table>
+	      <tr th:each="topic : ${usertopics}">
+		    <td th:text="${topic.topicId}">Id</td>
+			<td th:text="${topic.title}">Title</td>
+			<td th:text="${topic.category}">Category</td>
+	      </tr>
+	</table>
+</body>
+</html>   
